@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const port = process.env.port;
 const daoRouter = require("./routes/dao");
+const helmet = require("helmet");
 
 app.use(express.json());
 app.use(
@@ -10,10 +11,11 @@ app.use(
         extended: true,
     })
 );
+app.use(helmet());
 app.get("/", (req, res) => {
     res.json({ message: "ok" });
 });
-app.use("/readRadioShowManagers", daoRouter);
+app.use("/radioShowManagers", daoRouter);
 /* Error handler middleware */
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500;
