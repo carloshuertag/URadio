@@ -12,7 +12,8 @@ app.use(
     })
 );
 app.use(helmet());
-app.get("/", (req, res) => {
+app.use(express.static("../frontend/"));
+app.get("/ok", (req, res) => {
     res.json({ message: "ok" });
 });
 app.use("/radioShowManagers", daoRouter);
@@ -24,6 +25,5 @@ app.use((err, req, res, next) => {
     return;
 });
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
-
+    console.log(`Uradio app listening at http://localhost:${port}`);
 });
