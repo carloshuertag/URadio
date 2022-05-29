@@ -1,12 +1,24 @@
 package com.chuertag.uradio
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
-import com.chuertag.uradio.R
+import androidx.appcompat.app.AppCompatActivity
+import com.chuertag.uradio.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var activityMainBinding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(activityMainBinding.root)
+        setComponents()
+    }
+    private fun setComponents() {
+        activityMainBinding.idBtn.setOnClickListener {
+            startActivity(Intent(this, IdentifyActivity::class.java))
+        }
+        activityMainBinding.xplrBtn.setOnClickListener {
+            startActivity(Intent(this, ExploreActivity::class.java))
+        }
     }
 }
