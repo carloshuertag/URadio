@@ -1,0 +1,2 @@
+# URadio
+In this project, a web and mobile information system will be implemented for the registration by those responsible for music radio programs of the information of the program and the songs that they reproduce during their broadcasts, the consultation of said information by radio listeners and the recognition of song information from audio tracks by the latter (through the use of the ACRCloud application programming interface), with the possibility of accessing the identified songs through the Spotify platform (using of the audio platform API).
