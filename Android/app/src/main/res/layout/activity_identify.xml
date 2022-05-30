@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".IdentifyActivity">
+    tools:context=".UserInterface.IdentifyActivity"
+    tools:visibility="visible">
 
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/gifImageView"
@@ -36,12 +37,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gifImageView" />
 
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progress_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:max="70"
+        android:visibility="gone"
+        app:indicatorColor="?attr/colorTertiary"
+        app:layout_constraintBottom_toTopOf="@+id/strtgoBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sttsTxtVw"
+        app:trackColor="?attr/colorTertiaryContainer"
+        app:trackCornerRadius="30dp"
+        app:trackThickness="20dp" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/strtgoBtn"
         android:layout_width="wrap_content"
         android:layout_height="150dp"
-        android:text="@string/idBtn"
         android:fontFamily="@font/mustica_pro_semi_bold"
+        android:text="@string/idBtn"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

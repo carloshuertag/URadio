@@ -4,6 +4,9 @@
     <string name="xplrBtn">Explore Shows</string>
     <string name="instTxtVw">Make sure your mic is close enough to the sound source</string>
     <string name="sttsTxtVw">Listening to your microphone…</string>
+    <string name="stts2TxtVw">Retreiving result…</string>
     <string name="sttsinstTxtVw">Click the button below and let\'s see what that was about</string>
     <string name="goBtn">See results</string>
+    <string name="spBtn">Listen on Spotify</string>
+    <string name="getIdsBtn">See all identified songs</string>
 </resources>

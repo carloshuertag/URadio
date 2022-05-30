@@ -1,4 +1,4 @@
-package com.chuertag.uradio
+package com.chuertag.uradio.UserInterface
 
 import android.content.Intent
 import android.os.Bundle
