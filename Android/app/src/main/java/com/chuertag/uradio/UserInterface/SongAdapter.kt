@@ -16,20 +16,21 @@ class SongAdapter (private val dataArray: Array<Song>, private val songAdapterLi
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SongAdapter.ViewHolder {
         songInfoBinding = SongInfoBinding.bind(LayoutInflater.from(parent.context)
             .inflate(R.layout.song_info, parent, false))
+        songInfoBinding.root.clipToOutline = true
         return ViewHolder(songInfoBinding.root)
     }
 
     override fun onBindViewHolder(holder: SongAdapter.ViewHolder, position: Int) {
-        songInfoBinding.titleTxtVw.text = "Title: " + dataArray[position].title
-        songInfoBinding.albumTxtVw.text = "Album: " + dataArray[position].album
-        var artists = StringBuilder()
+        songInfoBinding.titleTxtVw.text = "Title: ${dataArray[position].title}"
+        songInfoBinding.albumTxtVw.text = "Album: ${dataArray[position].album}"
+        val artists: StringBuilder = StringBuilder()
         dataArray[position].artists.forEach {
             artists.append("\n")
             artists.append(it)
         }
-        songInfoBinding.artistsTxtVw.text = "Artists:" + artists.toString()
+        songInfoBinding.artistsTxtVw.text = "Artists:${artists.toString()}"
         songInfoBinding.spBtn.setOnClickListener {
-            songAdapterListener.onClickSongListener(dataArray[position].sId)
+            songAdapterListener.onClickSongListener(dataArray[position].sId, dataArray[position].isrc)
         }
     }
 
@@ -38,6 +39,6 @@ class SongAdapter (private val dataArray: Array<Song>, private val songAdapterLi
     class ViewHolder (view : View) : RecyclerView.ViewHolder(view)
 
     interface SongAdapterListener {
-        fun onClickSongListener(sId: String)
+        fun onClickSongListener(sId: String, isrc: String)
     }
 }

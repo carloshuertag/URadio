@@ -132,16 +132,33 @@ class IdentifyActivity : AppCompatActivity() {
                 var strArtists : ArrayList<String> = ArrayList()
                 songs.clear()
                 (0 until arr.length()).forEach {
-                    element = arr.get(it) as JSONObject
-                    song.sId = ((((element.get("external_metadata") as JSONObject)
-                        .get("spotify") as JSONObject).get("track") as JSONObject).get("id") as String)
-                    song.title = (element.get("title") as String)
-                    song.album = ((element.get("album") as JSONObject).get("name") as String)
-                    song.isrc = ((element.get("external_ids") as JSONObject).get("isrc") as String)
+                    element = arr.getJSONObject(it)
+                    println(arr.get(it))
+                    try {
+                        song.sId = element.getJSONObject("external_metadata")
+                            .getJSONObject("spotify").getJSONObject("track").getString("id")
+                    } catch (ex : Exception) {
+                        song.sId = ""
+                    }
+                    try {
+                        song.title = element.getString("title")
+                    } catch (ex : Exception) {
+                        song.title = ""
+                    }
+                    try {
+                        song.album = element.getJSONObject("album").getString("name")
+                    } catch (ex : Exception) {
+                        song.album = ""
+                    }
+                    try {
+                        song.isrc = element.getJSONObject("external_ids").getString("isrc")
+                    } catch (ex : Exception) {
+                        song.isrc = ""
+                    }
                     artists = (element.get("artists") as JSONArray)
                     strArtists.clear()
                     (0 until artists.length()).forEach {
-                        strArtists.add((artists.get(it) as JSONObject).get("name") as String)
+                        strArtists.add(artists.getJSONObject(it).getString("name"))
                     }
                     song.artists = strArtists.toTypedArray();
                     songs.add(song)
@@ -153,6 +170,7 @@ class IdentifyActivity : AppCompatActivity() {
                 Toast.makeText(this, "Couldn't identify song", Toast.LENGTH_SHORT).show()
             }
         } catch (ex: Exception){
+            recorded = false
             activityIdentifyBinding.sttsTxtVw.setText(R.string.instTxtVw)
             activityIdentifyBinding.strtgoBtn.setText(R.string.idBtn)
             activityIdentifyBinding.progressHorizontal.isIndeterminate = false

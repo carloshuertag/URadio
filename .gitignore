@@ -144,3 +144,6 @@ obj/
 #ACRCloud API files
 credentials.xml
 network_security_config.xml
+
+#Bootstrap files
+bootstrap/

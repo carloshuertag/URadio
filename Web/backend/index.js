@@ -25,5 +25,5 @@ app.use((err, req, res, next) => {
     return;
 });
 app.listen(port, () => {
-    console.log(`Uradio app listening at http://localhost:${port}`);
+    console.log(`URadio app listening at http://localhost:${port}`);
 });
