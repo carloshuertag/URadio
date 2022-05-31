@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Sign-in to URadio</title>
+    <meta name="description" content="URadio, ...">
+    <meta name="keywords" content="URadio, Spotify, ISRC">
+    <link rel="icon" href="img/logo.png" type="image/png">
+    <meta name="author" content="huerta2502">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="styles/index.css" />
+    <link rel="stylesheet" href="styles/sign-in-or-up.css" />
+</head>
+
+<body class="material-theme primary-color">
+    <div class="signin-container text-center">
+        <main class="form-signin signup">
+            <form method="POST" action="signup">
+                <img class="d-block mx-auto mb-4 shadow-lg rounded-circle button logo" src="img/logo.png" alt="" width="150" height="150">
+                <div class="shadow-lg button title secondary-color">
+                    <h1 class="h3 mb-3 fw-normal ">Sign-in to <img class="mx-auto" src="img/title_logo.png" alt="" width="150" height="auto"></h1>
+                </div>
+                <h7 class="h7 mb-3 fw-normal">Please enter your registered mail and password</h7><br/><br/>
+                <div class="form-floating">
+                    <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+                    <label for="floatingInput">Email</label>
+                </div>
+                <div class="form-floating">
+                    <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" required>
+                    <label for="floatingPassword">Password</label>
+                </div>
+                <div class="form-floating">
+                    <input type="password" name="vpassword" class="form-control" id="floatingPasswordv" placeholder="Repeat Password" required>
+                    <label for="floatingPasswordv">Repeat password</label>
+                    <div class="invalid-feedback">
+                        Passwords don't match.
+                    </div>
+                </div>
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                </div>
+                <button class="btn btn-lg button px-4 gap-3 btn-bd-primary button" type="submit">Go</button>
+                <p class="mt-5 mb-3">
+                    Check out our <a href="" class="text-info">Use Terms and Conditions Agreement</a> and <a href="" class="text-info">Privacy Policy</a>.
+                </p>
+            </form>
+        </main>
+    </div>
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
