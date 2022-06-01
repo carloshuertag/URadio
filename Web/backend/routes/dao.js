@@ -1,15 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const dao = require('../services/dao');
+const dao = require('../services/radioShowDao');
 router.get('/', async function(req, res, next) {
     try {
-        res.json(await dao.readRadioShowManagers(req.query.page));
+        res.json(await dao.readRadioShows(req.query.page));
     } catch (err) {
         console.error(`Error while getting radio show managers `, err.message);
         next(err);
     }
 });
-router.post('/', async function(req, res, next) {
+/*router.post('/', async function(req, res, next) {
     try {
         res.json(await dao.createRadioShowManager(req.body));
     } catch (err) {
@@ -32,7 +32,7 @@ router.delete('/:mail', async function(req, res, next) {
         console.error(`Error while deleting radio show manager`, err.message);
         next(err);
     }
-});
+});*/
 
 
 module.exports = router;

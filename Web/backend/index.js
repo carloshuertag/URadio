@@ -16,7 +16,7 @@ app.use(express.static("../frontend/"));
 app.get("/ok", (req, res) => {
     res.json({ message: "ok" });
 });
-app.use("/radioShowManagers", daoRouter);
+app.use("/radioShow", daoRouter);
 /* Error handler middleware */
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500;

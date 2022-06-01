@@ -5,6 +5,7 @@ const config = {
         user: process.env.dbUser,
         password: process.env.dbPassword,
         database: process.env.database,
+        multipleStatements: false
     },
     listPerPage: 10,
 };
