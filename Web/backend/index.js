@@ -2,7 +2,8 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const port = process.env.port;
-const daoRouter = require("./routes/dao");
+const daoRouter = require("./routes/radioShowDao");
+const castRouter = require("./routes/castDao");
 const helmet = require("helmet");
 
 app.use(express.json());

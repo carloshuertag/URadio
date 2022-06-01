@@ -45,7 +45,8 @@ class SongActivity : AppCompatActivity(), SongAdapter.SongAdapterListener {
                 thread.start()
                 try {
                     thread.join()
-                    spotifyIntent()
+                    if(spotifyId.equals("")) Toast.makeText(this, "Couldn't get Spotify id", Toast.LENGTH_SHORT).show()
+                    else spotifyIntent()
                 } catch (ex: Exception) {
                     Toast.makeText(this, "Couldn't get Spotify id", Toast.LENGTH_SHORT).show()
                 }
