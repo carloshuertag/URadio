@@ -6,6 +6,7 @@ const port = process.env.port;
 const daoRouter = require("./routes/radioShowDao");
 const radioShowManagerDao = require("./services/radioShowManagerDao");
 const castRouter = require("./routes/castDao");
+const crypto = require("crypto");
 const helmet = require("helmet");
 app.use(
     session({
@@ -27,9 +28,10 @@ app.post("/signup", async(request, response) => {
     let data;
     console.log(request);
     response.contentType("application/json");
-    if (request.body.mail == "" || request.body.password == "")
+    if (request.body.mail == "" || request.body.pswd == "")
         response.status(400);
     else {
+        request.body.pswd = crypto.createHash("sha256").update(request.body.pswd).digest("hex");
         data = await radioShowManagerDao.createRadioShowManager(request.body);
         response.status(200);
     }

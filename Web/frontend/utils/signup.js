@@ -48,10 +48,11 @@ function load() {
                 }
             })
             .then(data => {
+                console.log(data);
                 if (data)
-                    if (data.status == "Success") {
+                    if (data.data.status == "Success") {
                         //sessionStorage.setItem("u_name", data.u_name);
-                        alertify.alert('Aki', `Bienvenido`, function() {
+                        alertify.alert('URadio', `Bienvenido`, function() {
                             alertify.success('Ok');
                         }).set({
                             onshow: null,
@@ -59,8 +60,8 @@ function load() {
                                 //window.location.href = "/home.html";
                             }
                         });;
-                    } else alertify.alert('Aki', 'Correo y/o contraseña incorrectos, intente de nuevo', function() {
-                        alertify.error('Correo y contraseña incorrectos');
+                    } else alertify.alert('URadio', 'Ha ocurrido un error inesperado, intente de nuevo más tarde', function() {
+                        alertify.error('Intente más tarde');
                     });
             })
             .catch(function(err) {
@@ -71,7 +72,7 @@ function load() {
 }
 
 function errora() {
-    alertify.alert('Aki', 'Ocurrió un error, intente de nuevo más tarde', function() {
-        alertify.error('Error');
+    alertify.alert('URadio', 'Ocurrió un error, intente de nuevo más tarde', function() {
+        alertify.error('Intente máss tarde');
     });
 }
