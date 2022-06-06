@@ -11,7 +11,7 @@ router.get('/', async function(req, res, next) {
 });
 router.put('/:isrc/:managerId', async function(req, res, next) {
     try {
-        res.json(await castDao.updateRadioShowCastSong(req.params.isrc, req.params.managerId));
+        res.json(await castDao.createRadioShowCastSong(req.params.isrc, req.params.managerId));
     } catch (err) {
         console.error(`Error while updating radio show manager`, err.message);
         next(err);

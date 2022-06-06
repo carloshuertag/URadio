@@ -26,10 +26,12 @@ async function createRadioShowManager(radioShowManager) {
     const result = await db.query(
         `insert into radioShowManager (mail, pswd) values (?, ?)`, [radioShowManager.mail, radioShowManager.pswd]
     );
-    let message = (result.affectedRows) ?
+    let data = { status: ``, message: `` };
+    data.status = (result.affectedRows) ? `Success` : `Èrror`;
+    data.message = (data.status == `Success`) ?
         'Radio show manager created successfully' :
         'Error in creating radio show managers';
-    return { message };
+    return { data };
 }
 async function updateRadioShowManager(mail, radioShowManager) {
     const result = await db.query(

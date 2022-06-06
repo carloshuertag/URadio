@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const dao = require('../services/radioShowDao');
+const radioShowDao = require('../services/radioShowDao');
 router.get('/', async function(req, res, next) {
     try {
-        res.json(await dao.readRadioShows(req.query.page));
+        res.json(await radioShowDao.readRadioShows(req.query.page));
     } catch (err) {
         console.error(`Error while getting radio show managers `, err.message);
         next(err);
