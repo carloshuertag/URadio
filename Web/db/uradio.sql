@@ -38,7 +38,6 @@ create table radioShowCastSong(
     managerId int not null,
     castDate date not null,
     valid boolean not null,
-    primary key (isrc, managerId),
     foreign key (managerId) references radioShowManager(managerId),
     foreign key (isrc) references song(isrc)
 );
