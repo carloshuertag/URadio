@@ -1,3 +1,8 @@
+alertify.defaults.transition = "slide";
+alertify.defaults.theme.ok = "btn btn-bd-primary";
+alertify.defaults.theme.cancel = "btn btn-danger";
+alertify.defaults.theme.input = "form-control";
+
 window.addEventListener("load", load, false);
 
 function load() {
@@ -5,21 +10,21 @@ function load() {
     form.addEventListener("submit", function(event) {
         event.preventDefault();
         event.stopPropagation();
-        let req = { email: "", password: "" },
+        let req = { mail: "", pswd: "" },
             next = "/home.html";
         let entry;
         for (let i = 0; i < form.length; i++) {
             entry = form[i];
             if ((entry.type == "text" || entry.type == "password" || entry.type == "email") && entry.value != "") {
-                if (entry.name == "email") req.email = entry.value;
-                else if (entry.name == "password") req.password = entry.value;
+                if (entry.name == "mail") req.mail = entry.value;
+                else if (entry.name == "pswd") req.pswd = entry.value;
             } else if (entry.type == "text" || entry.type == "password") {
-                alert("Introduce los datos solicitados correctamente");
+                alertify.alert('URadio', 'Introduce correctamente los datos solicitados', function() {
+                    alertify.error('Introduce correctamente tus datos');
+                });
                 return false;
             }
         }
-        if (form.action.includes("dmsignin")) next = "/delivery.html";
-        if (form.action.includes("ssignin")) next = "/store.html";
         fetch(`${form.action}`, {
                 method: 'POST',
                 headers: new Headers({
@@ -37,23 +42,24 @@ function load() {
             })
             .then(data => {
                 if (data)
-                    if (data.u_name != "" && (data.case == 1 || data.case == 2)) {
-                        sessionStorage.setItem("u_name", data.u_name);
-                        sessionStorage.setItem("u_email", req.email);
-                        let notify;
-                        if (data.case == 1) {
-                            notify = alertify.alert('Aki', `Bienvenido ${data.u_name}`, function() {
-                                alertify.success('Ok');
-                            }).set({ onshow: null, onclose: function() { window.location.href = next; } });;
-                        } else if (data.case == 2) {
-                            notify = alertify.alert('Aki', `Contraseña incorrecta ${data.u_name}`, function() {
-                                alertify.success('Recuperar contraseña');
-                            }).set({ onshow: null, onclose: function() { window.location.href = "/psswdrcvr.html"; } });;
-                        }
-                    } else if (data.case == 0)
-                    alertify.alert('Aki', 'Correo y contraseña incorrectos, intente de nuevo', function() {
-                        alertify.error('Correo y contraseña incorrectos');
-                    });
+                    if (data.message == "Success") {
+                        alertify.alert('URadio', `Bienvenido`,
+                            () => alertify.success('Ok')).set({
+                            onshow: null,
+                            onclose: function() {
+                                sessionStorage.setItem('managerId', data.managerId);
+                                window.location.href = next;
+                            }
+                        })
+                    } else if (data.message == "pswd") {
+                    alertify.alert('URadio', 'La contraseña es incorrecta',
+                        () => alertify.error('La contraseña es incorrecta'));
+                    return false;
+                } else if (data.message == "mail") {
+                    alertify.alert('URadio', 'El usuario no existe',
+                        () => alertify.error('El usuario no existe'));
+                    return false;
+                } else errora();
             })
             .catch(function(err) {
                 console.error(err);

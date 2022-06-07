@@ -1,3 +1,8 @@
+alertify.defaults.transition = "slide";
+alertify.defaults.theme.ok = "btn btn-bd-primary";
+alertify.defaults.theme.cancel = "btn btn-danger";
+alertify.defaults.theme.input = "form-control";
+
 window.addEventListener("load", load, false);
 
 function load() {
@@ -25,7 +30,7 @@ function load() {
                 if (entry.name == "mail") req.mail = entry.value;
                 if (entry.name == "password") req.pswd = entry.value;
             } else if (entry.type == "password" || entry.type == "email") {
-                alertify.alert('Aki', 'Introduce correctamente los datos solicitados', function() {
+                alertify.alert('URadio', 'Introduce correctamente los datos solicitados', function() {
                     alertify.error('Introduce correctamente tus datos');
                 });
                 return false;
@@ -47,14 +52,14 @@ function load() {
                 }
             })
             .then(data => {
-                console.log(data);
                 if (data)
-                    if (data.data.status == "Success") {
+                    if (data.status == "Success") {
                         alertify.alert('URadio', `Bienvenido`, function() {
                             alertify.success('Ok');
                         }).set({
                             onshow: null,
-                            onclose: function() {
+                            onclose: () => {
+                                sessionStorage.setItem('managerId', data.managerId);
                                 window.location.href = "/home.html";
                             }
                         });;

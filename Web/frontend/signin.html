@@ -9,6 +9,7 @@
     <meta name="keywords" content="URadio, Spotify, ISRC">
     <link rel="icon" href="img/logo.png" type="image/png">
     <meta name="author" content="huerta2502">
+    <link href="alertifyjs/css/alertify.css" rel="stylesheet" />
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles/styles.css" />
     <link rel="stylesheet" href="styles/index.css" />
@@ -25,11 +26,11 @@
                 </div>
                 <h7 class="h7 mb-3 fw-normal">Please enter your registered mail and password</h7><br/><br/>
                 <div class="form-floating">
-                    <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+                    <input type="email" name="mail" class="form-control" id="floatingInput" placeholder="name@example.com" required>
                     <label for="floatingInput">Email</label>
                 </div>
                 <div class="form-floating">
-                    <input type="password" name="password" class="form-control" id="floatingPasswords" placeholder="Password" required>
+                    <input type="password" name="pswd" class="form-control" id="floatingPasswords" placeholder="Password" required>
                     <label for="floatingPasswords">Password</label>
                 </div>
                 <div class="mb-3">
@@ -42,7 +43,7 @@
                         <input type="checkbox" value="remember-me"> Remember me
                     </label>
                 </div>
-                <button class="btn btn-lg button px-4 gap-3 btn-bd-primary button" type="submit">Go</button>
+                <button class="btn btn-lg px-4 gap-3 btn-bd-primary button" type="submit">Go</button>
                 <p class="mt-5 mb-3">
                     Check out our <a href="" class="text-info">Use Terms and Conditions Agreement</a> and <a href="" class="text-info">Privacy Policy</a>.
                 </p>
@@ -50,8 +51,8 @@
         </main>
     </div>
     <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="alertifyjs/alertify.js" type="text/javascript"></script>
     <script src="utils/signin.js" type="text/javascript"></script>
-    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 </body>
 
 </html>
