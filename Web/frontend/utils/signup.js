@@ -4,7 +4,6 @@ function load() {
     document.getElementById("signup").addEventListener("submit", function verify(event) {
         event.preventDefault();
         event.stopPropagation();
-        console.log("signup form submitted");
         let psswd = document.getElementById("floatingPassword");
         let rpsswd = document.getElementById("floatingPasswordv");
         if (psswd.value !== rpsswd.value) {
@@ -51,13 +50,12 @@ function load() {
                 console.log(data);
                 if (data)
                     if (data.data.status == "Success") {
-                        //sessionStorage.setItem("u_name", data.u_name);
                         alertify.alert('URadio', `Bienvenido`, function() {
                             alertify.success('Ok');
                         }).set({
                             onshow: null,
                             onclose: function() {
-                                //window.location.href = "/home.html";
+                                window.location.href = "/home.html";
                             }
                         });;
                     } else alertify.alert('URadio', 'Ha ocurrido un error inesperado, intente de nuevo más tarde', function() {
@@ -72,7 +70,7 @@ function load() {
 }
 
 function errora() {
-    alertify.alert('URadio', 'Ocurrió un error, intente de nuevo más tarde', function() {
+    alertify.alert('URadio', 'Ocurrió un error, intente de nuevo más tarde', () => {
         alertify.error('Intente máss tarde');
     });
 }

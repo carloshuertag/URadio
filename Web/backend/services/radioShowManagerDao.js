@@ -1,19 +1,22 @@
 const db = require('./db');
 const helper = require('../helper');
 const config = require('../config');
-async function signInRadioShowManager(page = 1, mail, pswd) {
+async function signInRadioShowManager(page = 1, radioShowManager) {
     const offset = helper.getOffset(page, config.listPerPage);
     const rows = await db.query(
-        `select managerId from radioShowManager where mail = ? and pswd = ? limit ${offset},${config.listPerPage}`, [mail, pswd]
+        `select managerId from radioShowManager where mail = ? and pswd = ? limit ${offset},${config.listPerPage}`, [radioShowManager.mail, radioShowManager.pswd]
     );
-    const data = helper.emptyOrRows(rows);
-    if (data.length === 0) {
-        const existsResult = await db.query(`select managerId from radioShowManager where mail = ? limit ${offset},${config.listPerPage}`, [mail]);
+    let data = { result: ``, message: `` };
+    data.result = helper.emptyOrRows(rows);
+    data.message = 'Success';
+    if (data.result.length === 0) {
+        const existsResult = await db.query(`select managerId from radioShowManager where mail = ? limit ${offset},${config.listPerPage}`, [radioShowManager.mail]);
         const existsData = helper.emptyOrRows(existsResult);
         if (existsData.length === 0) {
-            data = { message: 'mail' };
+            data.message = 'mail';
         } else {
-            data = { message: 'password' };
+            data.result = existsData;
+            data.message = 'pswd';
         }
     }
     const meta = { page };
