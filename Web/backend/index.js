@@ -26,16 +26,7 @@ app.use(express.static('../frontend/')); // to serve static files
 
 app.use("", formsRouter);
 app.use('/api/radioShow', daoRouter);
-app.get('/logout', (request, response, next) => {
-    request.session.user = null
-    request.session.save(function(err) {
-        if (err) next(err)
-        request.session.regenerate(function(err) {
-            if (err) next(err)
-            response.redirect('/')
-        })
-    })
-});
+
 /* Error handler middleware */
 app.use((err, request, response, next) => {
     const statusCode = err.statusCode || 500;

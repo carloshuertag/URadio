@@ -56,5 +56,15 @@ router.post('/signup', async(request, response) => {
     response.send(data);
     response.end();
 });
+router.post('/signout', (request, response, next) => {
+    request.session.managerId = null
+    request.session.save(function(err) {
+        if (err) next(err)
+        request.session.regenerate(function(err) {
+            if (err) next(err)
+            response.status(200).redirect('/index.html')
+        })
+    })
+});
 
 module.exports = router;
