@@ -51,7 +51,7 @@ public class URadioAPI {
                 } else jsonReader.skipValue(); // Skip values of other keys
             }
         } else System.out.println("Status is not 200 (HTTP OK)");
-        return null;
+        return radioShows;
     }
 
 }

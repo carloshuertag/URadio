@@ -23,12 +23,9 @@ app.use(
 ); // to support URL-encoded bodies
 app.use(helmet()); // Helmet secures Express from some well-known web vulnerabilities by setting HTTP headers
 app.use(express.static('../frontend/')); // to serve static files
-
 app.use("", formsRouter);
 app.use('/api/radioShow', daoRouter);
-
-/* Error handler middleware */
-app.use((err, request, response, next) => {
+app.use((err, request, response, next) => { // Error handler middleware
     const statusCode = err.statusCode || 500;
     console.error(err.message, err.stack);
     response.status(statusCode).redirect('/oops.html');

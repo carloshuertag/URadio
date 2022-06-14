@@ -35,33 +35,107 @@
             </div>
         </div>
     </header>
-    <main>
+    <main class="container">
         <form action="radioShow" class="table-responsive">
-            <table class="table text-center table-bordered bordered-info gui align-middle">
+            <h2 class="mt-5">Radio show details:</h2>
+            <table class="table text-center table-borderless gui align-middle rounded-circle">
                 <thead>
                     <tr>
-                        <th>Show name</th>
-                        <th>Schedule</th>
-                        <th>Host name</th>
-                        <th>Available at:</th>
+                        <th><label for="name" class="form-label gui">Show name</label></th>
+                        <th><label for="schedule" class="form-label gui">Schedule</label></th>
+                        <th><label for="host" class="form-label gui">Host name</label></th>
+                        <th><label for="availableAt" class="form-label gui">Available at:</label></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><input type="text" id="name" /></td>
-                        <td><input id="schedule" type="text" /></td>
-                        <td><input id="host" type="text" /></td>
-                        <td><input id="availableAt" type="text" /></td>
+                        <td>
+                            <input type="text" class="form-control gui" id="name" placeholder="Chillhop N Lofi Only" value="Always Funk">
+                        </td>
+                        <td><input class="form-control gui" id="schedule" type="text" placeholder="Friday at 7pm gmt" value="Mondays to Fridays at 12pm" /></td>
+                        <td><input class="form-control gui" id="host" type="text" placeholder="Host name: eg. Roberto Mtz" value="Groovy Rose" /></td>
+                        <td><input class="form-control gui" id="availableAt" type="text" placeholder="Link / (XXX.X AM / FM)" value="www.alwaysfunk.com" /></td>
                     </tr>
                 </tbody>
                 <tfoot>
                     <tr>
                         <td colspan="4">
-                            <button type="submit" class="btn btn-outline-info">Confirm Radio Show Info</button>
+                            <button type="submit" class="btn btn-info">Confirm Radio Show Info</button>
                         </td>
                     </tr>
             </table>
         </form>
+        <h2 class="mt-1 mb-3">Validate casted songs:</h2>
+        <div class="accordion gui" id="accordionCasted">
+            <div class="accordion-item gui">
+                <h2 class="accordion-header gui" id="headingOne">
+                    <button class="accordion-button gui" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        2022-06-13 Playlist
+                </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show gui" aria-labelledby="headingOne" data-bs-parent="#accordionCasted">
+                    <div class="accordion-body gui">
+                        <form>
+                            <table class="table table-borderless gui text-center align-middle">
+                                <thead>
+                                    <tr>
+                                        <th>Song</th>
+                                        <th>Artists</th>
+                                        <th>Album</th>
+                                        <th>Validate / Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            About damn time
+                                        </td>
+                                        <td>
+                                            Lizzo
+                                        </td>
+                                        <td>
+                                            About damn time
+                                        </td>
+                                        <td>
+                                            <button type="submit" name="action" value="validate" class="btn btn-info">Validate</button> &nbsp;
+                                            <button type="submit" name="action" value="delete" class="btn btn-danger">Delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item gui">
+                <h2 class="accordion-header gui" id="headingTwo">
+                    <button class="accordion-button collapsed gui" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        2022-06-10 Playlist
+                </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse gui" aria-labelledby="headingTwo" data-bs-parent="#accordionCasted">
+                    <div class="accordion-body gui">
+                        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well
+                        as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though
+                        the transition does limit overflow.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item gui">
+                <h2 class="accordion-header gui" id="headingThree">
+                    <button class="accordion-button collapsed gui" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        2022-06-9 Playlist
+                </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse gui" aria-labelledby="headingThree" data-bs-parent="#accordionCasted">
+                    <div class="accordion-body gui">
+                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well
+                        as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though
+                        the transition does limit overflow.
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
